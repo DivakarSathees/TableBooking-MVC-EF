@@ -1,0 +1,33 @@
+@model List<DinningTable>
+
+<h1>Make a Reservation</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Table ID</th>
+            <th>Seating Capacity</th>
+            <th>Availability</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var table in Model)
+        {
+            <tr>
+                <td>@table.DinningTableID</td>
+                <td>@table.SeatingCapacity</td>
+                <td>@(table.Availability ? "Available" : "Booked")</td>
+                <td>
+                    @if (table.Availability)
+                    {
+                        <a href="@Url.Action("Create", new { tableId = table.DinningTableID })">Book</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("AvailableSlots", "Table")">View Available Slots</a><br>
+<a href="@Url.Action("BookedSlots", "Table")">View Booked Slots</a>

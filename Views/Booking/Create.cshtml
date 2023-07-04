@@ -1,0 +1,38 @@
+@model DinningTable
+
+<h1>Make a Reservation</h1>
+
+<h2>Selected Table: @Model.DinningTableID</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label for="reservationDate">Reservation Date:</label>
+        <input type="date" id="reservationDate" name="reservationDate" required>
+    </div>
+    <div>
+        <label for="timeSlot">Time Slot:</label>
+        <input type="time" id="timeSlot" name="timeSlot" required>
+    </div>
+    <input type="submit" value="Submit">
+}
+<!-- 
+@if (!ViewData.ModelState.IsValid)
+{
+    <div>
+        <h3>Validation Errors:</h3>
+        <ul>
+            @foreach (var key in ViewData.ModelState.Keys)
+            {
+                foreach (var error in ViewData.ModelState[key].Errors)
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            }
+        </ul>
+    </div>
+} -->
+
+<a href="@Url.Action("Index", "Booking")">Back to Reservations</a><br>
+<a href="@Url.Action("AvailableSlots", "Table")">View Available Slots</a><br>
+<a href="@Url.Action("BookedSlots", "Table")">View Booked Slots</a><br>

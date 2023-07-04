@@ -1,0 +1,13 @@
+@model Tablebooking.Models.Booking
+
+<h1>Reservation Confirmation</h1>
+
+<h2>Reservation Details</h2>
+<p>Booking ID: @Model.BookingID</p>
+<p>Table ID: @Model.DinningTableID</p>
+<p>Reservation Date: @Model.ReservationDate.ToShortDateString()</p>
+<p>Time Slot: @Model.TimeSlot</p>
+
+<a href="@Url.Action("Index", "Booking")">Back to Reservations</a><br>
+<a href="@Url.Action("AvailableSlots", "Table")">View Available Slots</a><br>
+<a href="@Url.Action("BookedSlots", "Table")">View Booked Slots</a>
